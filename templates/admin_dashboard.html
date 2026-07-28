@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+
+<title>
+Dashboard
+</title>
+
+
+<style>
+
+body{
+
+background:#111;
+color:white;
+font-family:Arial;
+text-align:center;
+
+}
+
+
+.box{
+
+margin:50px auto;
+width:500px;
+background:#222;
+padding:30px;
+border:2px solid gold;
+
+}
+
+
+input{
+
+padding:10px;
+margin:10px;
+
+}
+
+
+button{
+
+background:gold;
+padding:12px 30px;
+border:none;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="box">
+
+
+<h1>
+HORAM PRINTER Dashboard
+</h1>
+
+
+<h2>
+Add New Work
+</h2>
+
+
+
+<form action="/upload" method="POST" enctype="multipart/form-data">
+
+
+<input 
+type="text"
+name="title"
+placeholder="Work Title">
+
+
+<br>
+
+
+<input 
+type="file"
+name="image">
+
+
+<br>
+
+
+<button>
+Upload Image
+</button>
+
+
+</form>
+
+<hr style="margin:40px 0;border:1px solid gold;">
+
+
+<h2>
+Uploaded Works
+</h2>
+
+
+{% for work in images %}
+
+<div>
+
+<h3>
+{{ work[1] }}
+</h3>
+
+
+<img 
+src="/uploads/{{ work[2] }}"
+width="150">
+
+
+<br>
+
+
+<a href="/delete/{{ work[0] }}">
+
+<button style="background:red;color:white;">
+Delete
+</button>
+
+</a>
+
+
+</div>
+
+<hr>
+
+{% endfor %}
+
+<hr style="margin:40px 0;border:1px solid gold;">
+
+<h2>Website Settings</h2>
+
+<form action="/save-settings" method="POST">
+
+    <input
+    type="text"
+    name="website_name"
+    placeholder="Website Name">
+
+    <br>
+
+    <input
+    type="text"
+    name="whatsapp"
+    placeholder="WhatsApp Number">
+
+    <br>
+
+    <input
+    type="email"
+    name="email"
+    placeholder="Email">
+
+    <br>
+
+    <input
+    type="text"
+    name="address"
+    placeholder="Business Address">
+
+<br>
+
+<select name="theme">
+
+    <option value="luxury">
+        Luxury Gold
+    </option>
+
+    <option value="dark">
+        Dark Premium
+    </option>
+
+    <option value="blue">
+        Blue Business
+    </option>
+
+    <option value="red">
+        Red Theme
+    </option>
+
+</select>
+
+<br>
+
+    <br>
+
+    <button type="submit">
+        Save Settings
+    </button>
+
+</form>
+
+<hr style="margin:40px 0;border:1px solid gold;">
+
+<h2>Upload Website Logo</h2>
+
+<form action="/upload-logo" method="POST" enctype="multipart/form-data">
+
+    <input 
+    type="file"
+    name="logo">
+
+    <br><br>
+
+    <button type="submit">
+        Upload Logo
+    </button>
+
+</form>
+
+</div>
+
+
+</body>
+
+
+</html>

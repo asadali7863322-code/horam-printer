@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>
+{{ settings.website_name }} | Printing & Packaging Services
+</title>
+
+<link rel="icon" type="image/png" href="/static/favicon.png">
+
+    <meta name="description" content="HORAM PRINTER provides premium printing and packaging services including Lifafa Printing, Flex Printing, Doctor File Printing, Shopping Bags, Box Printing and Custom Packaging in Faisalabad.">
+
+
+<meta name="keywords" content="HORAM PRINTER, Printing Services Faisalabad, Lifafa Printing, Flex Printing, Doctor File Printing, Shopping Bags, Box Printing">
+
+
+<meta name="author" content="HORAM PRINTER">
+
+
+<meta name="robots" content="index, follow">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+            background:#111;
+            color:white;
+        }
+
+        .navbar{
+            background:#000;
+            border-bottom:3px solid gold;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:15px 40px;
+        }
+
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:15px;
+        }
+
+        .logo img{
+            width:70px;
+            height:70px;
+            border-radius:50%;
+        }
+
+        .logo h2{
+            color:gold;
+        }
+
+        .menu{
+            display:flex;
+            gap:25px;
+        }
+
+        .menu a{
+            color:white;
+            text-decoration:none;
+            font-size:18px;
+        }
+
+        .menu a:hover{
+            color:gold;
+        }
+
+        .hero{
+            text-align:center;
+            padding:80px 20px;
+        }
+
+        .hero h1{
+            color:gold;
+            font-size:50px;
+            margin-bottom:20px;
+        }
+
+        .contact{
+            text-align:center;
+            padding:50px;
+            background:#1b1b1b;
+        }
+
+        .contact h2{
+            color:gold;
+            margin-bottom:20px;
+        }
+
+        .contact p{
+            margin:10px;
+            font-size:20px;
+        }
+
+.blue .contact{
+    background:#06283D;
+}
+
+.red .contact{
+    background:#3b0000;
+}
+
+.dark .contact{
+    background:#000;
+}
+
+
+.blue .hero{
+    background:#06283D;
+}
+
+.red .hero{
+    background:#3b0000;
+}
+
+.dark .hero{
+    background:#000;
+}
+
+.hero{
+    text-align:center;
+    padding:120px 20px;
+    background:linear-gradient(135deg,#111,#222);
+}
+
+.hero h1{
+    color:gold;
+    font-size:60px;
+    margin-bottom:20px;
+}
+
+.hero h3{
+    color:white;
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+    font-size:20px;
+    color:#ddd;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    background:gold;
+    color:black;
+    padding:15px 35px;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:8px;
+}
+
+.btn:hover{
+    background:white;
+}
+
+.whatsapp{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    background:#25D366;
+
+    color:white;
+
+    padding:15px 25px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    font-size:18px;
+
+}
+
+
+.whatsapp:hover{
+
+    transform:scale(1.1);
+
+}.whatsapp{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    background:#25D366;
+
+    color:white;
+
+    padding:15px 25px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    font-size:18px;
+
+}
+
+
+.whatsapp:hover{
+
+    transform:scale(1.1);
+
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+
+.navbar{
+
+    flex-direction:column;
+
+    padding:20px;
+
+}
+
+
+.logo{
+
+    margin-bottom:20px;
+
+}
+
+
+.menu{
+
+    flex-direction:column;
+
+    text-align:center;
+
+    gap:15px;
+
+}
+
+
+.hero{
+
+    padding:60px 20px;
+
+}
+
+
+.hero h1{
+
+    font-size:35px;
+
+}
+
+
+.hero h3{
+
+    font-size:22px;
+
+}
+
+
+.hero p{
+
+    font-size:16px;
+
+}
+
+
+.contact{
+
+    padding:30px 15px;
+
+}
+
+
+.contact p{
+
+    font-size:16px;
+
+}
+
+
+.whatsapp{
+
+    right:15px;
+
+    bottom:15px;
+
+    padding:12px 20px;
+
+    font-size:15px;
+
+}
+
+
+}
+
+/* ======================
+   THEMES
+====================== */
+
+
+.luxury{
+
+    background:#111;
+    color:white;
+
+}
+
+
+.dark{
+
+    background:#000;
+    color:white;
+
+}
+
+
+.blue{
+
+    background:#06283D;
+    color:white;
+
+}
+
+
+.red{
+
+    background:#3b0000;
+    color:white;
+
+}
+
+
+/* Navbar Theme */
+
+.blue .navbar{
+
+    border-bottom:3px solid cyan;
+
+}
+
+
+.red .navbar{
+
+    border-bottom:3px solid red;
+
+}
+
+
+.dark .navbar{
+
+    border-bottom:3px solid white;
+
+}
+
+.blue .navbar{
+    background:#06283D;
+    border-bottom:3px solid cyan;
+}
+
+
+.red .navbar{
+    background:#3b0000;
+    border-bottom:3px solid red;
+}
+
+
+.dark .navbar{
+    background:#000;
+    border-bottom:3px solid white;
+}
+
+
+.blue .hero{
+    background:#06283D;
+}
+
+
+.red .hero{
+    background:#3b0000;
+}
+
+/* =====================
+   FOOTER
+===================== */
+
+
+.footer{
+
+    background:#000;
+
+    color:white;
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    border-top:3px solid gold;
+
+}
+
+
+.footer h2{
+
+    color:gold;
+
+    margin-bottom:15px;
+
+}
+
+
+.footer p{
+
+    margin:10px;
+
+    font-size:16px;
+
+}
+
+/* =====================
+ SERVICES
+===================== */
+
+
+<div class="card">
+
+<h3>
+Flex Printing
+</h3>
+
+<p>
+High quality flex printing for banners, posters and advertisements.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Doctor File Printing
+</h3>
+
+<p>
+Professional doctor files and custom folder printing.
+</p>
+
+</div>
+
+.services{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+}
+
+
+.services h2{
+
+    color:gold;
+
+    font-size:40px;
+
+    margin-bottom:40px;
+
+}
+
+
+.service-box{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:25px;
+
+}
+
+
+.card{
+
+    background:#222;
+
+    width:250px;
+
+    padding:30px;
+
+    border:2px solid gold;
+
+    border-radius:10px;
+
+}
+
+
+.card h3{
+
+    color:gold;
+
+    margin-bottom:15px;
+
+}
+
+
+.card p{
+
+    color:#ddd;
+
+    line-height:1.6;
+
+}
+
+
+</style>
+
+
+</head>
+
+<body class="{{ settings.theme }}">
+
+<nav class="navbar">
+
+<div class="logo">
+
+{% if settings.logo %}
+<img src="/uploads/{{ settings.logo }}">
+{% endif %}
+
+<h2>{{ settings.website_name }}</h2>
+
+</div>
+
+<div class="menu">
+
+<a href="/">Home</a>
+
+<a href="/gallery">Gallery</a>
+
+<a href="#contact">Contact</a>
+
+<a href="https://wa.me/{{ settings.whatsapp }}" target="_blank">
+WhatsApp
+</a>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+    <h1>
+        {{ settings.website_name }}
+    </h1>
+
+    <h3>
+        Premium Printing & Packaging Solutions
+    </h3>
+
+    <p>
+        We provide high quality Lifafa Printing, Shopping Bags,
+        Box Printing, Stickers, Visiting Cards and Custom Packaging
+        with premium finishing.
+    </p>
+
+    <br>
+
+    <a href="/gallery" class="btn">
+        View Our Work
+    </a>
+<!-- =========================
+     SERVICES SECTION
+========================== -->
+
+<section class="services">
+
+<h2>
+Our Services
+</h2>
+
+
+<div class="service-box">
+
+
+<div class="card">
+
+<h3>
+Lifafa Printing
+</h3>
+
+<p>
+Premium quality custom lifafa printing for businesses and brands.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Flex Printing
+</h3>
+
+<p>
+High quality flex printing for banners, posters and advertisements.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Doctor File Printing
+</h3>
+
+<p>
+Professional doctor files and custom folder printing solutions.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Shopping Bags
+</h3>
+
+<p>
+Custom printed shopping bags with attractive designs.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Box Printing
+</h3>
+
+<p>
+Premium packaging box printing for products and companies.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Visiting Cards
+</h3>
+
+<p>
+Professional business cards with high quality finishing.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Stickers Printing
+</h3>
+
+<p>
+Custom stickers printing for products, shops and brands.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Custom Packaging
+</h3>
+
+<p>
+Complete packaging solutions according to customer requirements.
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<section class="contact" id="contact">
+
+<h2>Contact Us</h2>
+
+<p><b>WhatsApp:</b> {{ settings.whatsapp }}</p>
+
+<p><b>Email:</b> {{ settings.email }}</p>
+
+<p><b>Address:</b> {{ settings.address }}</p>
+
+</section>
+
+<!-- WhatsApp Floating Button -->
+
+<a 
+href="https://wa.me/{{ settings.whatsapp }}"
+class="whatsapp"
+target="_blank">
+
+WhatsApp
+
+</a>
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer class="footer">
+
+<h2>
+{{ settings.website_name }}
+</h2>
+
+
+<p>
+Premium Printing & Packaging Solutions
+</p>
+
+
+<p>
+📱 WhatsApp:
+{{ settings.whatsapp }}
+</p>
+
+
+<p>
+📧 Email:
+{{ settings.email }}
+</p>
+
+
+<p>
+📍 Address:
+{{ settings.address }}
+</p>
+
+
+<hr>
+
+
+<p>
+© 2026 {{ settings.website_name }} 
+All Rights Reserved
+</p>
+
+
+</footer>
+
+</body>
+
+</html>
