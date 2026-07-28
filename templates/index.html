@@ -1,797 +1,531 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-{{ settings.website_name }} | Printing & Packaging Services
-</title>
+    <title>{{ settings.website_name }} | Premium Printing & Packaging</title>
 
-<link rel="icon" type="image/png" href="/static/favicon.png">
-
-    <meta name="description" content="HORAM PRINTER provides premium printing and packaging services including Lifafa Printing, Flex Printing, Doctor File Printing, Shopping Bags, Box Printing and Custom Packaging in Faisalabad.">
-
-
-<meta name="keywords" content="HORAM PRINTER, Printing Services Faisalabad, Lifafa Printing, Flex Printing, Doctor File Printing, Shopping Bags, Box Printing">
-
-
-<meta name="author" content="HORAM PRINTER">
-
-
-<meta name="robots" content="index, follow">
+    <link rel="icon" href="/static/favicon.png">
+    <meta name="description" content="HORAM PRINTER provides premium printing and packaging services in Pakistan.">
 
     <style>
-
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial,sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        body{
-            background:#111;
-            color:white;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .navbar{
-            background:#000;
-            border-bottom:3px solid gold;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:15px 40px;
+        body {
+            background: #111;
+            color: #fff;
+            transition: background-color 0.4s, color 0.4s;
         }
 
-        .logo{
-            display:flex;
-            align-items:center;
-            gap:15px;
+        /* =========================
+           NAVBAR
+        ========================= */
+        .navbar {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background: #000;
+            border-bottom: 3px solid gold;
+            z-index: 999;
         }
 
-        .logo img{
-            width:70px;
-            height:70px;
-            border-radius:50%;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .logo h2{
-            color:gold;
+        .logo img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
-        .menu{
-            display:flex;
-            gap:25px;
+        .logo h2 {
+            color: gold;
+            font-size: 28px;
         }
 
-        .menu a{
-            color:white;
-            text-decoration:none;
-            font-size:18px;
+        .menu {
+            display: flex;
+            gap: 30px;
         }
 
-        .menu a:hover{
-            color:gold;
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: .3s;
         }
 
-        .hero{
-            text-align:center;
-            padding:80px 20px;
+        .menu a:hover {
+            color: gold;
         }
 
-        .hero h1{
-            color:gold;
-            font-size:50px;
-            margin-bottom:20px;
+        /* =========================
+           BUTTONS
+        ========================= */
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 35px;
+            background: gold;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: .3s;
         }
 
-        .contact{
-            text-align:center;
-            padding:50px;
-            background:#1b1b1b;
+        .btn:hover {
+            background: white;
+            transform: translateY(-3px);
         }
 
-        .contact h2{
-            color:gold;
-            margin-bottom:20px;
+        .whatsapp {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: #25D366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 999;
+            transition: .3s;
         }
 
-        .contact p{
-            margin:10px;
-            font-size:20px;
+        .whatsapp:hover {
+            transform: scale(1.08);
         }
 
-.blue .contact{
-    background:#06283D;
-}
-
-.red .contact{
-    background:#3b0000;
-}
-
-.dark .contact{
-    background:#000;
-}
-
-
-.blue .hero{
-    background:#06283D;
-}
-
-.red .hero{
-    background:#3b0000;
-}
-
-.dark .hero{
-    background:#000;
-}
-
-.hero{
-    text-align:center;
-    padding:120px 20px;
-    background:linear-gradient(135deg,#111,#222);
-}
-
-.hero h1{
-    color:gold;
-    font-size:60px;
-    margin-bottom:20px;
-}
-
-.hero h3{
-    color:white;
-    font-size:30px;
-    margin-bottom:20px;
-}
-
-.hero p{
-    max-width:800px;
-    margin:auto;
-    line-height:1.8;
-    font-size:20px;
-    color:#ddd;
-}
-
-.btn{
-    display:inline-block;
-    margin-top:30px;
-    background:gold;
-    color:black;
-    padding:15px 35px;
-    text-decoration:none;
-    font-weight:bold;
-    border-radius:8px;
-}
-
-.btn:hover{
-    background:white;
-}
-
-.whatsapp{
-
-    position:fixed;
-
-    right:25px;
-
-    bottom:25px;
-
-    background:#25D366;
-
-    color:white;
-
-    padding:15px 25px;
-
-    border-radius:50px;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    font-size:18px;
-
-}
-
-
-.whatsapp:hover{
-
-    transform:scale(1.1);
-
-}.whatsapp{
-
-    position:fixed;
-
-    right:25px;
-
-    bottom:25px;
-
-    background:#25D366;
-
-    color:white;
-
-    padding:15px 25px;
-
-    border-radius:50px;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    font-size:18px;
-
-}
-
-
-.whatsapp:hover{
-
-    transform:scale(1.1);
-
-}
-
-/* =========================
-   MOBILE RESPONSIVE
-========================= */
-
-@media(max-width:768px){
-
-
-.navbar{
-
-    flex-direction:column;
-
-    padding:20px;
-
-}
-
-
-.logo{
-
-    margin-bottom:20px;
-
-}
-
-
-.menu{
-
-    flex-direction:column;
-
-    text-align:center;
-
-    gap:15px;
-
-}
-
-
-.hero{
-
-    padding:60px 20px;
-
-}
-
-
-.hero h1{
-
-    font-size:35px;
-
-}
-
-
-.hero h3{
-
-    font-size:22px;
-
-}
-
-
-.hero p{
-
-    font-size:16px;
-
-}
-
-
-.contact{
-
-    padding:30px 15px;
-
-}
-
-
-.contact p{
-
-    font-size:16px;
-
-}
-
-
-.whatsapp{
-
-    right:15px;
-
-    bottom:15px;
-
-    padding:12px 20px;
-
-    font-size:15px;
-
-}
-
-
-}
-
-/* ======================
-   THEMES
-====================== */
-
-
-.luxury{
-
-    background:#111;
-    color:white;
-
-}
-
-
-.dark{
-
-    background:#000;
-    color:white;
-
-}
-
-
-.blue{
-
-    background:#06283D;
-    color:white;
-
-}
-
-
-.red{
-
-    background:#3b0000;
-    color:white;
-
-}
-
-
-/* Navbar Theme */
-
-.blue .navbar{
-
-    border-bottom:3px solid cyan;
-
-}
-
-
-.red .navbar{
-
-    border-bottom:3px solid red;
-
-}
-
-
-.dark .navbar{
-
-    border-bottom:3px solid white;
-
-}
-
-.blue .navbar{
-    background:#06283D;
-    border-bottom:3px solid cyan;
-}
-
-
-.red .navbar{
-    background:#3b0000;
-    border-bottom:3px solid red;
-}
-
-
-.dark .navbar{
-    background:#000;
-    border-bottom:3px solid white;
-}
-
-
-.blue .hero{
-    background:#06283D;
-}
-
-
-.red .hero{
-    background:#3b0000;
-}
-
-/* =====================
-   FOOTER
-===================== */
-
-
-.footer{
-
-    background:#000;
-
-    color:white;
-
-    text-align:center;
-
-    padding:40px 20px;
-
-    border-top:3px solid gold;
-
-}
-
-
-.footer h2{
-
-    color:gold;
-
-    margin-bottom:15px;
-
-}
-
-
-.footer p{
-
-    margin:10px;
-
-    font-size:16px;
-
-}
-
-/* =====================
- SERVICES
-===================== */
-
-
-<div class="card">
-
-<h3>
-Flex Printing
-</h3>
-
-<p>
-High quality flex printing for banners, posters and advertisements.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>
-Doctor File Printing
-</h3>
-
-<p>
-Professional doctor files and custom folder printing.
-</p>
-
-</div>
-
-.services{
-
-    text-align:center;
-
-    padding:60px 20px;
-
-}
-
-
-.services h2{
-
-    color:gold;
-
-    font-size:40px;
-
-    margin-bottom:40px;
-
-}
-
-
-.service-box{
-
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:25px;
-
-}
-
-
-.card{
-
-    background:#222;
-
-    width:250px;
-
-    padding:30px;
-
-    border:2px solid gold;
-
-    border-radius:10px;
-
-}
-
-
-.card h3{
-
-    color:gold;
-
-    margin-bottom:15px;
-
-}
-
-
-.card p{
-
-    color:#ddd;
-
-    line-height:1.6;
-
-}
-
-
-</style>
-
-
+        /* =========================
+           SECTIONS & CARDS
+        ========================= */
+        .hero {
+            padding: 120px 10%;
+            text-align: center;
+            background: linear-gradient(135deg, #111, #1f1f1f);
+        }
+
+        .hero h1 {
+            color: gold;
+            font-size: 65px;
+            margin-bottom: 20px;
+        }
+
+        .hero h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 850px;
+            margin: auto;
+            line-height: 1.9;
+            font-size: 20px;
+        }
+
+        .about, .services, .why, .contact, .footer {
+            padding: 90px 8%;
+            text-align: center;
+        }
+
+        .about h2, .services h2, .why h2, .contact h2 {
+            color: gold;
+            font-size: 45px;
+            margin-bottom: 40px;
+        }
+
+        .about-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .about-text p {
+            font-size: 19px;
+            line-height: 1.9;
+        }
+
+        .about-cards {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .about-card, .card, .why-card {
+            background: #222;
+            border: 2px solid gold;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: .4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px gold;
+        }
+
+        .about-card h3, .card h3, .why-card h3 {
+            color: gold;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .service-box, .why-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .why-card {
+            border-left: 5px solid gold;
+        }
+
+        /* =========================
+           MOBILE RESPONSIVE
+        ========================= */
+        @media(max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .logo {
+                margin-bottom: 15px;
+            }
+            .menu {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .about-container {
+                flex-direction: column;
+            }
+            .about-cards {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 40px;
+            }
+        }
+
+        /* =========================================================
+           DYNAMIC THEME STYLES (LIGHT vs DARK TEXT FIXES)
+        ========================================================= */
+
+        /* 🌙 1. DEFAULT DARK & LUXURY THEMES */
+        body.theme-luxury, body.theme-dark, body.theme-black {
+            background-color: #111111 !important;
+            color: #ffffff !important;
+        }
+        body.theme-luxury p, body.theme-dark p, body.theme-black p,
+        body.theme-luxury span, body.theme-dark span, body.theme-black span {
+            color: #dddddd !important;
+        }
+        body.theme-luxury .about-card, body.theme-luxury .card, body.theme-luxury .why-card {
+            background-color: #222222 !important;
+        }
+
+        /* ☀️ 2. CLEAN WHITE LIGHT THEME */
+        body.theme-light_clean {
+            background-color: #ffffff !important;
+            color: #111111 !important;
+        }
+        body.theme-light_clean p, 
+        body.theme-light_clean span,
+        body.theme-light_clean h3,
+        body.theme-light_clean div {
+            color: #111111 !important;
+        }
+        body.theme-light_clean .hero h3 {
+            color: #222222 !important;
+        }
+        body.theme-light_clean .hero {
+            background: #f8f9fa !important;
+        }
+        body.theme-light_clean .about-card, 
+        body.theme-light_clean .card, 
+        body.theme-light_clean .why-card {
+            background-color: #f8f9fa !important;
+            border: 1px solid #cccccc !important;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        body.theme-light_clean .navbar {
+            background: #ffffff !important;
+            border-bottom: 3px solid #000000 !important;
+        }
+        body.theme-light_clean .menu a {
+            color: #000000 !important;
+        }
+
+        /* 🌊 3. SOFT ROYAL BLUE LIGHT THEME */
+        body.theme-light_blue {
+            background-color: #eef2f7 !important;
+            color: #0f172a !important;
+        }
+        body.theme-light_blue p, 
+        body.theme-light_blue span,
+        body.theme-light_blue h3 {
+            color: #0f172a !important;
+        }
+        body.theme-light_blue .hero {
+            background: #e2e8f0 !important;
+        }
+        body.theme-light_blue .about-card, 
+        body.theme-light_blue .card, 
+        body.theme-light_blue .why-card {
+            background-color: #ffffff !important;
+            border: 1px solid #cbd5e1 !important;
+            border-top: 4px solid #0d6efd !important;
+        }
+        body.theme-light_blue .navbar {
+            background: #ffffff !important;
+            border-bottom: 3px solid #0d6efd !important;
+        }
+        body.theme-light_blue .menu a {
+            color: #0f172a !important;
+        }
+
+        /* 📜 4. WARM CREAM GOLD LIGHT THEME */
+        body.theme-light_cream {
+            background-color: #fdfbf7 !important;
+            color: #2c221e !important;
+        }
+        body.theme-light_cream p, 
+        body.theme-light_cream span,
+        body.theme-light_cream h3 {
+            color: #2c221e !important;
+        }
+        body.theme-light_cream .hero {
+            background: #f5efe6 !important;
+        }
+        body.theme-light_cream .about-card, 
+        body.theme-light_cream .card, 
+        body.theme-light_cream .why-card {
+            background-color: #ffffff !important;
+            border: 1px solid #d4af37 !important;
+        }
+        body.theme-light_cream .navbar {
+            background: #fdfbf7 !important;
+            border-bottom: 3px solid #d4af37 !important;
+        }
+        body.theme-light_cream .menu a {
+            color: #2c221e !important;
+        }
+    </style>
 </head>
 
-<body class="{{ settings.theme }}">
+<body class="theme-{{ settings.theme if settings and settings.theme else 'luxury' }}">
 
 <nav class="navbar">
+   <div class="logo" style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        {% if settings and settings.get('logo') %}
+            <img src="/uploads/{{ settings.get('logo') }}" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.4);">
+        {% elif settings and settings['logo'] %}
+            <img src="/uploads/{{ settings['logo'] }}" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.4);">
+        {% endif %}
+    </div>
 
-<div class="logo">
-
-{% if settings.logo %}
-<img src="/uploads/{{ settings.logo }}">
-{% endif %}
-
-<h2>{{ settings.website_name }}</h2>
-
+    <h2 style="margin: 0; line-height: 1;">{{ settings['website_name'] if settings and 'website_name' in settings else 'HORAM PRINTER' }}</h2>
 </div>
 
-<div class="menu">
-
-<a href="/">Home</a>
-
-<a href="/gallery">Gallery</a>
-
-<a href="#contact">Contact</a>
-
-<a href="https://wa.me/{{ settings.whatsapp }}" target="_blank">
-WhatsApp
-</a>
-
-</div>
-
+    <div class="menu">
+        <a href="/">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/order">Order</a>
+        <a href="#contact">Contact</a>
+        <a href="https://wa.me/{{ settings.whatsapp }}" target="_blank">WhatsApp</a>
+    </div>
 </nav>
 
 <section class="hero">
-
-    <h1>
-        {{ settings.website_name }}
-    </h1>
-
-    <h3>
-        Premium Printing & Packaging Solutions
-    </h3>
-
+    <h1>{{ settings.website_name }}</h1>
+    <h3>Premium Printing & Packaging Solutions</h3>
     <p>
-        We provide high quality Lifafa Printing, Shopping Bags,
-        Box Printing, Stickers, Visiting Cards and Custom Packaging
-        with premium finishing.
+        We provide professional printing services for businesses, shops, hospitals, schools and companies.
+        From Lifafa Printing to Custom Packaging, HORAM PRINTER delivers premium quality with affordable prices.
     </p>
 
-    <br>
+    <div class="hero-buttons">
+        <a href="/gallery" class="btn">View Our Work</a>
+        <a href="https://wa.me/{{ settings.whatsapp }}" class="btn" target="_blank">Place Order</a>
+    </div>
+</section>
 
-    <a href="/gallery" class="btn">
-        View Our Work
-    </a>
-<!-- =========================
-     SERVICES SECTION
-========================== -->
+<section class="about" id="about">
+    <h2>About HORAM PRINTER</h2>
+    <div class="about-container">
+        <div class="about-text">
+            <p>
+                HORAM PRINTER is a trusted name in the printing industry.
+                We specialize in premium quality printing, packaging and branding solutions.
+                Our mission is to provide world-class printing services using modern technology, premium materials and attractive finishing.
+                Customer satisfaction is always our first priority.
+            </p>
+        </div>
+
+        <div class="about-cards">
+            <div class="about-card">
+                <h3>500+</h3>
+                <p>Happy Clients</p>
+            </div>
+            <div class="about-card">
+                <h3>3000+</h3>
+                <p>Completed Orders</p>
+            </div>
+            <div class="about-card">
+                <h3>5+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="about-card">
+                <h3>24/7</h3>
+                <p>Customer Support</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="service-box">
+        <div class="card">
+            <h3>📄 Lifafa Printing</h3>
+            <p>Premium custom lifafa printing for businesses and brands.</p>
+        </div>
+        <div class="card">
+            <h3>🛍 Shopping Bags</h3>
+            <p>Luxury shopping bags with attractive printing and finishing.</p>
+        </div>
+        <div class="card">
+            <h3>🖨 Flex Printing</h3>
+            <p>High quality flex banners for advertising and branding.</p>
+        </div>
+        <div class="card">
+            <h3>🏥 Doctor Files</h3>
+            <p>Professional doctor files and hospital folders.</p>
+        </div>
+        <div class="card">
+            <h3>📦 Box Printing</h3>
+            <p>Custom packaging boxes with premium printing.</p>
+        </div>
+        <div class="card">
+            <h3>🏷 Stickers Printing</h3>
+            <p>Product stickers and label printing for every business.</p>
+        </div>
+        <div class="card">
+            <h3>💳 Visiting Cards</h3>
+            <p>Modern business cards with premium finishing.</p>
+        </div>
+        <div class="card">
+            <h3>🎁 Custom Packaging</h3>
+            <p>Complete packaging solutions according to your requirements.</p>
+        </div>
+    </div>
+</section>
+
+<section class="why">
+    <h2>Why Choose HORAM PRINTER?</h2>
+    <div class="why-box">
+        <div class="why-card">
+            <h3>⭐ Premium Quality</h3>
+            <p>Best printing quality using modern machines.</p>
+        </div>
+        <div class="why-card">
+            <h3>⚡ Fast Delivery</h3>
+            <p>Quick production and on-time delivery.</p>
+        </div>
+        <div class="why-card">
+            <h3>💰 Affordable Prices</h3>
+            <p>Competitive prices without compromising quality.</p>
+        </div>
+        <div class="why-card">
+            <h3>🎨 Custom Designs</h3>
+            <p>Printing according to your own design and branding.</p>
+        </div>
+        <div class="why-card">
+            <h3>🤝 Customer Satisfaction</h3>
+            <p>We always focus on long-term customer relationships.</p>
+        </div>
+        <div class="why-card">
+            <h3>📞 24/7 Support</h3>
+            <p>We're always available to help our customers.</p>
+        </div>
+    </div>
+</section>
+
+<section class="hero">
+    <h2 style="color:gold;">Ready to Place Your Order?</h2>
+    <p style="margin-top:20px; font-size:20px;">Contact us today for premium printing services.</p>
+    <a href="https://wa.me/{{ settings.whatsapp }}" class="btn" target="_blank">🛒 Place Order Now</a>
+</section>
 
 <section class="services">
-
-<h2>
-Our Services
-</h2>
-
-
-<div class="service-box">
-
-
-<div class="card">
-
-<h3>
-Lifafa Printing
-</h3>
-
-<p>
-Premium quality custom lifafa printing for businesses and brands.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Flex Printing
-</h3>
-
-<p>
-High quality flex printing for banners, posters and advertisements.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Doctor File Printing
-</h3>
-
-<p>
-Professional doctor files and custom folder printing solutions.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Shopping Bags
-</h3>
-
-<p>
-Custom printed shopping bags with attractive designs.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Box Printing
-</h3>
-
-<p>
-Premium packaging box printing for products and companies.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Visiting Cards
-</h3>
-
-<p>
-Professional business cards with high quality finishing.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Stickers Printing
-</h3>
-
-<p>
-Custom stickers printing for products, shops and brands.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Custom Packaging
-</h3>
-
-<p>
-Complete packaging solutions according to customer requirements.
-</p>
-
-</div>
-
-
-</div>
-
-
+    <h2>Our Gallery</h2>
+    <p style="margin-bottom:30px;">Some of our latest printing projects.</p>
+    <a href="/gallery" class="btn">View Complete Gallery</a>
 </section>
 
+<section class="why">
+    <h2>Customer Reviews</h2>
+    <div class="why-box">
+        <div class="why-card">
+            <h3>⭐⭐⭐⭐⭐</h3>
+            <p>Excellent Printing Quality. Highly Recommended.</p>
+        </div>
+        <div class="why-card">
+            <h3>⭐⭐⭐⭐⭐</h3>
+            <p>Very Fast Delivery and Good Service.</p>
+        </div>
+        <div class="why-card">
+            <h3>⭐⭐⭐⭐⭐</h3>
+            <p>Professional Staff and Premium Finishing.</p>
+        </div>
+    </div>
+</section>
 
 <section class="contact" id="contact">
-
-<h2>Contact Us</h2>
-
-<p><b>WhatsApp:</b> {{ settings.whatsapp }}</p>
-
-<p><b>Email:</b> {{ settings.email }}</p>
-
-<p><b>Address:</b> {{ settings.address }}</p>
-
+    <h2>Contact Us</h2>
+    <p>📱 <b>WhatsApp:</b> {{ settings.whatsapp }}</p>
+    <p>📧 <b>Email:</b> {{ settings.email }}</p>
+    <p>📍 <b>Address:</b> {{ settings.address }}</p>
+    <a href="https://wa.me/{{ settings.whatsapp }}" class="btn" target="_blank">Place Order</a>
 </section>
 
-<!-- WhatsApp Floating Button -->
-
-<a 
-href="https://wa.me/{{ settings.whatsapp }}"
-class="whatsapp"
-target="_blank">
-
-WhatsApp
-
-</a>
-
-<!-- =========================
-     FOOTER
-========================== -->
+<a href="https://wa.me/{{ settings.whatsapp }}" class="whatsapp" target="_blank">💬 WhatsApp</a>
 
 <footer class="footer">
-
-<h2>
-{{ settings.website_name }}
-</h2>
-
-
-<p>
-Premium Printing & Packaging Solutions
-</p>
-
-
-<p>
-📱 WhatsApp:
-{{ settings.whatsapp }}
-</p>
-
-
-<p>
-📧 Email:
-{{ settings.email }}
-</p>
-
-
-<p>
-📍 Address:
-{{ settings.address }}
-</p>
-
-
-<hr>
-
-
-<p>
-© 2026 {{ settings.website_name }} 
-All Rights Reserved
-</p>
-
-
+    <h2>{{ settings.website_name }}</h2>
+    <p>Premium Printing & Packaging Solutions</p>
+    <hr style="margin:20px 0; border:1px solid gold;">
+    <p>© 2026 {{ settings.website_name }} | All Rights Reserved</p>
 </footer>
 
 </body>
-
 </html>
