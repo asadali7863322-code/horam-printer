@@ -1,441 +1,263 @@
-import json
-from flask import Flask, render_template, request, redirect, session, send_from_directory
-import sqlite3
+import streamlit as st
 import os
+from PIL import Image
 
-# ===========================
-# Get Website Settings
-# ===========================
+# ==========================
+# Page Settings
+# ==========================
 
-def get_settings():
-
-    conn = sqlite3.connect("horam.db")
-    conn.row_factory = sqlite3.Row
-
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT * FROM settings LIMIT 1")
-
-    settings = cursor.fetchone()
-
-    conn.close()
-
-    return settings
-
-def create_settings_table():
-    conn = sqlite3.connect("horam.db")
-    cursor = conn.cursor()
-
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS settings(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-
-        website_name TEXT DEFAULT 'HORAM PRINTER',
-
-        logo TEXT DEFAULT '',
-
-        theme TEXT DEFAULT 'luxury',
-
-        whatsapp TEXT DEFAULT '',
-
-        email TEXT DEFAULT '',
-
-        address TEXT DEFAULT ''
-    )
-    """)
-
-    cursor.execute("SELECT * FROM settings")
-
-    if cursor.fetchone() is None:
-
-        cursor.execute("""
-        INSERT INTO settings
-        (website_name,logo,theme,whatsapp,email,address)
-
-        VALUES
-
-        ('HORAM PRINTER','','luxury','','','')
-        """)
-
-    conn.commit()
-    conn.close()
-
-app = Flask(__name__)
-
-# Session Secret Key
-app.secret_key = "horam_printer_secret"
+st.set_page_config(
+    page_title="HORAM PRINTER",
+    page_icon="🖨️",
+    layout="wide"
+)
 
 
-# Upload Folder
-UPLOAD_FOLDER = "uploads"
+# ==========================
+# Custom CSS
+# ==========================
 
-app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+st.markdown("""
+<style>
+
+body{
+    background:#111;
+}
+
+.main{
+    background:#111;
+    color:white;
+}
+
+h1{
+    color:#FFD700;
+    text-align:center;
+    font-size:55px;
+}
+
+h2{
+    color:#FFD700;
+}
+
+.card{
+    background:#222;
+    padding:20px;
+    border-radius:15px;
+    margin:10px;
+}
+
+.whatsapp{
+    background:#25D366;
+    color:white;
+    padding:12px 25px;
+    border-radius:30px;
+    text-decoration:none;
+    font-size:18px;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 
 
-# =========================
-# DATABASE CREATE
-# =========================
+# ==========================
+# Header
+# ==========================
 
-def create_database():
+st.title("HORAM PRINTER")
 
-    conn = sqlite3.connect("horam.db")
+st.subheader(
+    "Premium Printing & Packaging Solutions"
+)
 
-    cursor = conn.cursor()
+st.write(
+"""
+We provide high quality printing services including:
 
-
-
-    # Admin Table
-
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS admin(
-
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-
-        username TEXT,
-
-        password TEXT
-
-    )
-    """)
+• Lifafa Printing  
+• Shopping Bags Printing  
+• Flex Printing  
+• Doctor Files  
+• Box Printing  
+• Stickers  
+• Visiting Cards  
+"""
+)
 
 
 
-    # Gallery Table
-
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS gallery(
-
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-
-        title TEXT,
-
-        image TEXT
-
-    )
-    """)
+st.divider()
 
 
 
-    # Default Admin Create
+# ==========================
+# Logo
+# ==========================
 
-    cursor.execute(
-        "SELECT * FROM admin"
+st.header("Our Brand")
+
+
+logo_path = "static/horam_logo.jpeg"
+
+
+if os.path.exists(logo_path):
+
+    image = Image.open(logo_path)
+
+    st.image(
+        image,
+        width=200
     )
 
+else:
+    st.info("Logo will be added soon")
 
-    admin = cursor.fetchone()
 
 
-    if not admin:
+st.divider()
 
-        cursor.execute(
-            """
-            INSERT INTO admin(username,password)
-            VALUES(?,?)
-            """,
-            ("admin","1234")
-        )
 
 
+# ==========================
+# Services
+# ==========================
 
-    conn.commit()
+st.header("Our Services")
 
-    conn.close()
 
+col1,col2,col3 = st.columns(3)
 
 
-create_database()
+with col1:
 
+    st.markdown("""
+    <div class="card">
 
+    ### 🛍️ Shopping Bags
 
-# =========================
-# HOME PAGE
-# =========================
+    Premium quality custom shopping bags printing.
 
-@app.route("/")
-def home():
+    </div>
+    """,unsafe_allow_html=True)
 
-    settings = get_settings()
 
-    print(dict(settings))
 
-    return render_template(
-        "index.html",
-        settings=settings
-    )
+with col2:
 
+    st.markdown("""
+    <div class="card">
 
+    ### 📄 Doctor Files
 
+    Professional doctor file printing.
 
-# =========================
-# ADMIN LOGIN
-# =========================
+    </div>
+    """,unsafe_allow_html=True)
 
 
-@app.route("/admin", methods=["GET","POST"])
-def admin_login():
 
+with col3:
 
-    if request.method == "POST":
+    st.markdown("""
+    <div class="card">
 
+    ### 🖨️ Flex Printing
 
-        username = request.form["username"]
+    High quality flex banners and advertising material.
 
-        password = request.form["password"]
+    </div>
+    """,unsafe_allow_html=True)
 
 
 
-        conn = sqlite3.connect("horam.db")
+st.divider()
 
-        cursor = conn.cursor()
 
 
+# ==========================
+# Gallery
+# ==========================
 
-        cursor.execute(
-            """
-            SELECT * FROM admin
-            WHERE username=? AND password=?
-            """,
-            (username,password)
-        )
+st.header("Our Work Gallery")
 
 
-        user = cursor.fetchone()
+folder="uploads"
 
 
-        conn.close()
+if os.path.exists(folder):
 
+    images=os.listdir(folder)
 
+    cols=st.columns(3)
 
-        if user:
 
-            session["admin"] = username
+    for index,img in enumerate(images):
 
-            return redirect("/dashboard")
+        path=os.path.join(folder,img)
 
 
-        else:
+        try:
 
-            return "Wrong Username or Password"
+            picture=Image.open(path)
 
 
+            with cols[index%3]:
 
-    return render_template("admin_login.html")
+                st.image(
+                    picture,
+                    caption=img,
+                    use_container_width=True
+                )
 
 
+        except:
+            pass
 
 
+else:
 
-# =========================
-# ADMIN DASHBOARD
-# =========================
+    st.info("Gallery images coming soon")
 
-@app.route("/dashboard")
-def dashboard():
 
-    if "admin" not in session:
-        return redirect("/admin")
 
+st.divider()
 
-    conn = sqlite3.connect("horam.db")
-    cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM gallery")
 
-    images = cursor.fetchall()
+# ==========================
+# Contact
+# ==========================
 
-    conn.close()
+st.header("Contact Us")
 
 
-    return render_template(
-        "admin_dashboard.html",
-        images=images
-    )
+st.write(
+"""
+📱 WhatsApp: 03001234567
 
+📧 Email:
+asadali7863322@gmail.com
 
+📍 Address:
+Faisalabad, Pakistan
+"""
+)
 
-# =========================
-# RUN APP
-# =========================
 
-# =========================
-# IMAGE UPLOAD
-# =========================
-
-@app.route("/upload", methods=["POST"])
-def upload():
-
-    if "admin" not in session:
-        return redirect("/admin")
-
-
-    title = request.form["title"]
-
-    image = request.files["image"]
-
-
-    if image:
-
-        filename = image.filename
-
-
-        image.save(
-            os.path.join(
-                app.config["UPLOAD_FOLDER"],
-                filename
-            )
-        )
-
-
-        conn = sqlite3.connect("horam.db")
-
-        cursor = conn.cursor()
-
-
-        cursor.execute(
-            """
-            INSERT INTO gallery(title,image)
-            VALUES(?,?)
-            """,
-            (title,filename)
-        )
-
-
-        conn.commit()
-
-        conn.close()
-
-
-    return redirect("/dashboard")
-
-# =========================
-# GALLERY PAGE
-# =========================
-
-@app.route("/gallery")
-def gallery():
-
-    conn = sqlite3.connect("horam.db")
-
-    cursor = conn.cursor()
-
-    cursor.execute(
-        "SELECT * FROM gallery"
-    )
-
-    images = cursor.fetchall()
-
-    conn.close()
-
-
-    settings = get_settings()
-
-
-    return render_template(
-        "gallery.html",
-        images=images,
-        settings=settings
-    )
-
-# =========================
-# DELETE GALLERY POST
-# =========================
-
-@app.route("/delete/<int:id>")
-def delete_post(id):
-
-    if "admin" not in session:
-        return redirect("/admin")
-
-
-    conn = sqlite3.connect("horam.db")
-
-    cursor = conn.cursor()
-
-
-    cursor.execute(
-        "DELETE FROM gallery WHERE id=?",
-        (id,)
-    )
-
-
-    conn.commit()
-
-    conn.close()
-
-
-    return redirect("/dashboard")
-
-# ===========================
-# Save Website Settings
-# ===========================
-
-@app.route("/save-settings", methods=["POST"])
-def save_settings():
-
-    website_name = request.form.get("website_name")
-    whatsapp = request.form.get("whatsapp")
-    email = request.form.get("email")
-    address = request.form.get("address")
-    theme = request.form.get("theme")
-    print("Selected Theme:", theme)
-
-    conn = sqlite3.connect("horam.db")
-    cursor = conn.cursor()
-
-    cursor.execute("""
-UPDATE settings
-SET website_name=?,
-    whatsapp=?,
-    email=?,
-    address=?,
-    theme=?
-WHERE id=1
+st.markdown(
+"""
+<a class="whatsapp" href="https://wa.me/03001234567">
+Chat on WhatsApp
+</a>
 """,
-(
-    website_name,
-    whatsapp,
-    email,
-    address,
-    theme
-))
-
-    conn.commit()
-    conn.close()
-
-    return redirect("/dashboard")
+unsafe_allow_html=True
+)
 
 
 
-# ===========================
-# Upload Website Logo
-# ===========================
-
-@app.route("/upload-logo", methods=["POST"])
-def upload_logo():
-
-    # ... آپ کا موجودہ کوڈ ...
-
-    return redirect("/dashboard")
+st.divider()
 
 
-# ===========================
-# SHOW UPLOADED FILES
-# ===========================
-
-@app.route("/uploads/<filename>")
-def uploaded_file(filename):
-    return send_from_directory(
-        app.config["UPLOAD_FOLDER"],
-        filename
-    )
-
-
-
-if __name__ == "__main__":
-
-    create_database()
-    create_settings_table()
-
-    app.run(debug=True)
+st.success(
+"© 2026 HORAM PRINTER - All Rights Reserved"
+)
